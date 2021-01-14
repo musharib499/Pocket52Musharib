@@ -52,7 +52,10 @@ class UserListViewModel @ViewModelInject constructor(private val repo:UserListRe
         if (query.isNotBlank() && query.isNotEmpty()){
                 viewModelScope.launch {
                    localDataSource.getUser(query).observe(lifecycleOwner,{
-                       if (it.isNullOrEmpty())  _noDataFound.postValue(true) else _dataValue.postValue(it)
+                       if (it.isNullOrEmpty())  _noDataFound.postValue(true) else {
+                           _dataValue.postValue(it)
+                           _noDataFound.postValue(false)
+                       }
 
                    })
 
