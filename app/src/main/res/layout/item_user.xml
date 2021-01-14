@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="item"
+            type="com.pocket52musharib.api.model.UserInfo" />
+        <variable
+            name="fragment"
+            type="com.pocket52musharib.ui.fragment.UserListFragment" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/myCard"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:onClick="@{()->fragment.moveNext(item)}"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvName"
+                style="@style/normalText.Large.Bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tvPost"
+                android:text="@{item.name}"
+                tools:text ="Name"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvPost"
+                style="@style/normalText.Large.Bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/tvName"
+                app:layout_constraintTop_toTopOf="@id/tvName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/tvName"
+                android:text="@{@string/posts(item.countPost)}"
+                tools:text ="Name"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvUserName"
+                style="@style/normalText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tvName"
+                app:layout_constraintStart_toStartOf="@id/tvName"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="@{item.username}"
+                tools:text="User Id"/>
+            <View
+                android:id="@+id/mView"
+                android:layout_width="1dp"
+                android:layout_height="8dp"
+                android:layout_marginStart="4dp"
+                android:background="#E8EAED"
+                app:layout_constraintStart_toEndOf="@id/tvUserName"
+                app:layout_constraintTop_toTopOf="@id/tvUserName"
+                app:layout_constraintBottom_toBottomOf="@id/tvUserName"
+                />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvEmail"
+                style="@style/normalText.Small.Bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                app:layout_constraintStart_toEndOf="@id/mView"
+                app:layout_constraintTop_toTopOf="@id/mView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/mView"
+                android:text="@{item.email}"
+                tools:text="email id"
+
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

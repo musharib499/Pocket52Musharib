@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Pocket52Musharib</string>
+    <string name="posts">Total Post : %d</string>
+    <string name="search">Search</string>
+    <string name="user_list">User List</string>
+    <string name="user_post_list">User Post List</string>
+</resources>
